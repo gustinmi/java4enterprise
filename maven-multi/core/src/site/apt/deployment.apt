@@ -1,15 +1,5 @@
 Deployment of web application
 
-Section Artifacts locations 
-
-    Desciption of deployment 
-    
-*-----------+-----------+-----------+
-|| Arfifact || Location || Server |
-*-----------+-----------+-----------+
-| asod-webapp images | /var/www/img | web |
-*-----------+-----------+-----------+
-
 Section Deployment procedure
   
     * update subversion:  svn update
