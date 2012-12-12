@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+    <Resource name="jdbc/studentDatasource" auth="Container" type="javax.sql.DataSource"
+              maxActive="100" maxIdle="30" maxWait="10000" removeAbandoned="true"
+              removeAbandonedTimeout="60" logAbandoned="true"
+              username="root" password="student" driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost/delavnica?autoReconnect=true"/>
+
+</Context>
