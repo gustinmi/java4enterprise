@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/changes/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+    <properties>
+        <title>antaranga library</title>
+        <author email="gustinmi@gmail.com">Mitja Guštin</author>
+    </properties>
+    <body>
+        <release version="1.0" date="2012-19-07" description="Initial commit">
+            <action dev="gustinmi@gmail.com" type="add" > Initial commit maven structure
+            </action>
+        </release>
+    </body>
+</document>

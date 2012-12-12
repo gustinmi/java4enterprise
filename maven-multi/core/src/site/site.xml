@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ASOD Portal zvočne obravnave">
+   <publishDate position="right"/>
+   <version position="right"/>
+    <body>
+        <menu ref="modules" />
+        <menu ref="reports" />
+        <menu name="Development">
+            <item name="Development instructions" href="/development.html"/>
+            <item name="Deployment instructions" href="/deployment.html"/>
+        </menu>
+    </body>
+</project>

@@ -1,0 +1,86 @@
+Development
+
+Preparation and instalation of development tools
+
+    The preparation of development environment consists of following sections
+    
+*-----------+-----------+
+|| Tool || Installation |
+*-----------+-----------+
+| Java JDK    | Cell 2    |
+*-----------+-----------+
+| Eclipse EE    | Cell 2    |
+*-----------+-----------+
+| Maven    | Cell 2    |
+*-----------+-----------+
+| Sonar    | Cell 2    |
+*-----------+-----------+
+| JMetre    | Cell 2    |
+*-----------+-----------+
+| Closure CSS compiler | http://code.google.com/p/closure-stylesheets/ |
+*-----------+-----------+
+| js closure compiler | https://developers.google.com/closure/compiler/ |
+*-----------+-----------+
+
+Building, packaging and deploying application
+
+    Building application
+    
+        * mvn compile  (only compile)
+        
+        * mvn clean    (deletes target directotry; everythibng)
+        
+        * mvn test     (executes unit tests)
+        
+        * mvn package  (all above) 
+
+    Running sonar analysis
+    
+        * sh sonar.sh console
+        
+        * open site: http://localhost:9000/
+
+
+    Updating project's documentation
+
+        * mvn site:site or mvn site
+
+
+Documentation
+
+    Tomcat ajp connector
+    
+        * server.xml configuration :  http://tomcat.apache.org/tomcat-6.0-doc/config/ajp.html       
+    
+        * mod_jk properties :  http://tomcat.apache.org/connectors-doc/reference/apache.html    
+        
+        * mod_jk properties :  http://tomcat.apache.org/connectors-doc/reference/workers.html   
+
+    Maven related
+
+        * Maven change management : http://maven.apache.org/plugins/maven-changes-plugin/changes.html 
+        
+        * Documentation with mvn:  http://www.javaworld.com/javaworld/jw-02-2006/jw-0227-maven.html?page=3 
+        
+        * Documentation formats:  http://maven.apache.org/doxia/references/xdoc-format.html
+        
+        * Site plugin HOME : http://maven.apache.org/plugins/maven-site-plugin
+        
+        * Maven war plugin: http://maven.apache.org/plugins/maven-war-plugin/examples/adding-filtering-webresources.html
+        
+    JMetre related
+    
+        * Component reference:  http://jmeter.apache.org/usermanual/component_reference.html
+        
+    Apache server performance optimizations
+    
+        * setting default encoding: http://www.w3.org/International/questions/qa-htaccess-charset
+        
+        * setting cache policy: http://www.askapache.com/htaccess/apache-speed-cache-control.html    
+        
+    Website performace 
+    
+        *    closure compiler, css compiler (minification)
+        
+         
+         

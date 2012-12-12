@@ -1,0 +1,21 @@
+Deployment of web application
+
+Section Artifacts locations 
+
+    Desciption of deployment 
+    
+*-----------+-----------+-----------+
+|| Arfifact || Location || Server |
+*-----------+-----------+-----------+
+| lib.jar | where you want | web |
+
+Section Deployment procedure
+  
+    * run maven: mvn package
+    
+    
+
+    
+
+
+
