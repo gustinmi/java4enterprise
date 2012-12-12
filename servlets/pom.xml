@@ -6,7 +6,7 @@
 	<artifactId>Startup</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Startup</name>
+	<name>startup</name>
 	<url>http://www.guru.si</url>
 	<description>Playground for servlet 3.0</description>
 	<dependencies>
