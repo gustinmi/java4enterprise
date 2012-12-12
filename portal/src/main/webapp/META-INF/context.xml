@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+     <Resource name="jdbc/gostinecDB" auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000" removeAbandoned="true"
+               removeAbandonedTimeout="60" logAbandoned="true"
+               username="root" password="sitart5" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost/gostinec_prod?autoReconnect=true"/>
+    
+
+</Context>
