@@ -8,7 +8,7 @@
 	<packaging>war</packaging>
 	<name>startup</name>
 	<url>http://www.guru.si</url>
-	<description>Playground for servlets 3.0</description>
+	<description>Playground project for servlets 3.0</description>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
