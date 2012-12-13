@@ -93,6 +93,76 @@ public class Database {
 
 		return isValid;
 	}
+	
+	
+	public String getUserDetails(final String user) {
+        final StringBuilder output = new StringBuilder();
+        ResultSet rs = null;
+        PreparedStatement statement = null;
+        Connection connection = null;
+        try {
+            final String sql = "SELECT id,name FROM users WHERE name = ?";
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            statement.setString(1, user);
+            rs = statement.executeQuery();
+            if (rs.next()) {
+                output.append("{");
+                output.append("\"id\":\"");
+                output.append(getString(rs.getString("id")));
+                output.append("\",");
+                output.append("\"name\":\"");
+                output.append(getString(rs.getString("name")));
+                output.append("\"");
+                output.append("}");
+            }
+            while (rs.next()) { // the rest if any
+                output.append(",");
+                output.append("{");
+                output.append("\"id\":\"");
+                output.append(getString(rs.getString("id")));
+                output.append("\",");
+                output.append("\"name\":\"");
+                output.append(getString(rs.getString("name")));
+                output.append("\"");
+                output.append("}");
+            }
+        } catch (SQLException e) {
+            log.error("Error db", e);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    ;
+                }
+                rs = null;
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    ;
+                }
+                statement = null;
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    ;
+                }
+                connection = null;
+            }
+        }
+
+        return output.toString();
+    }
+	
+	 private String getString(String fromString) {
+	        return null==fromString || fromString.isEmpty() ? "" : fromString;
+	    }
+	
 
 	//  Worker thread (drop some job on worker and forget it)
 	

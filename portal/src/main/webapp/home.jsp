@@ -28,6 +28,8 @@ if (ok) {
   
     <div class="menu header">
         <div class="logout"></div>
+        <button class='details'>Podrobnosti</button>
+        <div class="result"></div>
     </div>
     
     

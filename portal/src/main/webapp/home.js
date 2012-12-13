@@ -1,5 +1,5 @@
  $(document).ready(function () {
-    var arr,states,jqTbl,jqRemoveAll,jqAddNew,dummyIndex = 0,logoutLink;
+    var arr,states,jqTbl,jqRemoveAll,jqAddNew,dummyIndex = 0,logoutLink,detailsBtn;
     
     states = {
         'table1' : {
@@ -22,6 +22,9 @@
                 ).appendTo('div.logout');
                 
                 $('div.logout').clone().appendTo('div.menu.footer');
+                
+                detailsBtn = $('button.details');
+                detailsBtn.click(states.table1.details);
                 
             },
             'render' : function(myArr){
@@ -109,6 +112,19 @@
                 'clean' : function(){
                     $('table.branch tfoot').empty();
                 }
+            },
+            "details" : function() {
+                $.ajax({
+                    type: "POST",
+                    url: CONTEXT_PATH + '/UserDetails',
+                    data: { 'user': USER},
+                    dataType: "json",
+                    success: function (data) {
+                        if (data && data['status']==='ok' ) {
+                            alert('Your id in databse is' + data['data']['id']);
+                        }
+                    }
+                });
             },
             "close" : function(){
                 jqTbl.remove();

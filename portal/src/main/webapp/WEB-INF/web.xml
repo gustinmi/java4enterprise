@@ -4,6 +4,11 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+    <context-param>
+        <param-name>authenticate</param-name>
+        <param-value>true</param-value>
+        <description>use session authentication mechanism (false for development)</description>
+    </context-param>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
