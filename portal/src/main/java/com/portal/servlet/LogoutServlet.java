@@ -1,11 +1,13 @@
 package com.portal.servlet;
 
 import java.io.IOException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet(name = "LogoutServlet", urlPatterns = { "/Logout" })
 public class LogoutServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

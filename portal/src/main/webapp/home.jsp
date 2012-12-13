@@ -15,14 +15,50 @@ if (ok) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Portal</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/home.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
+<script src="<%=request.getContextPath()%>/js/init.js"></script>
+<script src="<%=request.getContextPath()%>/home.js"></script>
 <script>
-    var USER = '<%=pageBean.getUsername()%>';
+    var USER = '<%=pageBean.getUsername()%>',
+        CONTEXT_PATH = '<%=request.getContextPath()%>';
 </script>
 </head>
 <body>
   
-  Logged in <%=pageBean.getUsername()%>
+    <div class="menu header">
+        <div class="logout"></div>
+    </div>
+    
+    
+    <h1>Logged in <%=pageBean.getUsername()%></h1>
+    
+    <div class="branches">
+    
+    <table class="grid">
+        <caption>Some users</caption>
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>User name</th>
+            <th>Action to take</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    <div class="actions">
+        <button class='removeAll'>Remove all</button>
+        <button class='addNew'>Add new</button>
+    </div>
+    
+    </div>
+    
+    <div class="menu footer">
+      
+    </div>
+   
     
 </body>
 <%
