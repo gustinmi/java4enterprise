@@ -1,6 +1,8 @@
 package com.portal.servlet;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +27,8 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/error.jsp");
 			return;
 		}
+		Date d = new Date();
+		//Database.instance.logValue("User tried to login:" + uid + ", " + pwd, new Timestamp(d.getTime()));
 		Boolean ok = Database.instance.checkUser(uid,pwd);
 		if (!ok) {
 			response.sendRedirect(request.getContextPath() + "/error.jsp");
@@ -34,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 		cookie.setMaxAge(365 * 24 * 60 * 60);
 		response.addCookie(cookie);
 		response.sendRedirect(request.getContextPath() + "/home.jsp");
+		
 		return;
 	}
 

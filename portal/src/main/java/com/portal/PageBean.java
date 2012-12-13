@@ -4,6 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
+import com.portal.SessionUser;
 
 public class PageBean {
 	public Logger log = Logger.getLogger(this.getClass());
