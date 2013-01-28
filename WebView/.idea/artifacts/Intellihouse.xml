@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="apk" build-on-make="true" name="Intellihouse">
+    <output-path>$PROJECT_DIR$/out/artifacts/Intellihouse</output-path>
+    <properties id="android-properties">
+      <options>
+        <option name="includeSystemProGuardCfgFile" value="true" />
+        <option name="keyStoreUrl" value="file://" />
+        <option name="proGuardCfgFileUrl" value="file://$PROJECT_DIR$/proguard-project.txt" />
+      </options>
+    </properties>
+    <root id="archive" name="Intellihouse.apk">
+      <element id="android-final-package" facet="WebView/android/Android" />
+    </root>
+  </artifact>
+</component>
