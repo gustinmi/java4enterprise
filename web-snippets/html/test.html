@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>test</title>
+    <link type="text/css" rel="stylesheet" media="all" href="main.css" />
+    <style type="text/css">
+        div.branches {
+            padding: 5px;
+        }
+        div.branches table.grid {
+            border: 1px solid #dcdcdc;
+            /*border-collapse: collapse;*/
+            empty-cells: show;
+            width: 610px;
+            padding: 5px;
+        }
+        div.branches table.grid caption {
+            text-align: left;
+            padding: 5px;
+        }
+        div.branches table.grid th, div.branches table.grid tr, div.branches table.grid td {
+            text-align: left;
+        }
+        div.branches table.grid th {
+            width: 200px;
+        }
+        div.branches table.grid thead, div.branches table.grid tfoot {
+            color: #ffffff;
+            background: black;
+        }
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var arr,states,jqTbl,jqRemoveAll,jqAddNew,dummyIndex = 0;
+            states = {
+                'table1' : {
+                    'bind' : function(){
+                        arr = [{'id':'5','name':'john'},{'id':'6','name':'jack'},{'id':'8','name':'johannes'}];
+                        jqTbl = $('table.grid');
+                        jqRemoveAll = $('button.removeAll');
+                        jqAddNew = $('button.addNew');
+                        jqRemoveAll.on('click', states.table1.rmAll);
+                        jqAddNew.on('click', states.table1.add.draw);
+                        states.table1.render(arr);
+                    },
+                    'render' : function(myArr){
+                        jqTbl.find('tbody').empty();
+                        for(var i=0;i<myArr.length;i++){
+                            var data = myArr[i],tr,td,btnRm;
+                            tr = $('<tr/>');
+                            tr.data('id',data['id']);
+                            td = $('<td>' + data['id'] + '</td>');
+                            tr.append(td);
+                            td = $('<td>' + data['name'] + '</td>');
+                            tr.append(td);
+                            td = $('<td/>');
+                            btnRm = $('<button/>',
+                                {
+                                    text: 'Remove',
+                                    click: states.table1.rowRm
+                                });
+                            td.append(btnRm);
+                            tr.append(td);
+                            jqTbl.find('tbody').append(tr);
+                            jqTbl.delegate("tr", "click", function(e) {
+                                e.preventDefault();
+                                e.stopImmediatePropagation();
+                                var id = $(this).data('id');
+                            });
+                        }
+                    },
+                    'rowRm':function(el){
+                        el.preventDefault();
+                        el.stopImmediatePropagation();
+                        var el2 = $(this).parent().parent();
+                        var idFilter = el2.data('id');
+                        arr = $.grep(arr, function(el, index){
+                            return el.id !== idFilter;
+                        });
+                        states.table1.render(arr);
+                    },
+                    'rmAll' : function(){
+                        arr = [];
+                        states.table1.render(arr);
+                    },
+                    'add': {
+                        'draw' : function(){
+                            var tfooter,tr,td,btnAdd,input,btnCancel;
+                            tfooter = $('<tfoot/>');
+                            tr = $('<tr/>');
+                            tr.data('id','new');
+                            td = $('<td />', {colspan:3,text:'Add new person'});
+                            input = $('<input/>',{
+                                class : 'newName',
+                                name : 'newName',
+                                type: 'text'
+                            });
+                            td.append(input);
+                            btnAdd = $('<button/>',
+                                    {
+                                        text: 'Confirm',
+                                        click: states.table1.add.handle
+                                    });
+                            td.append(btnAdd);
+                            btnCancel = $('<button/>',
+                                    {
+                                        text: 'Cancel',
+                                        click: states.table1.add.cancel
+                                    });
+                            td.append(btnCancel);
+                            tr.append(td);
+                            tfooter.append(tr);
+                            jqTbl.append(tfooter);
+                            input.focus();
+                        },
+                        'handle' : function(){
+                            var val = $('tfoot input[type="text"].newName').val();
+                            arr.push({'id':'new' + dummyIndex, 'name':val});
+                            states.table1.render(arr);
+                            var row = $(this).parent().parent();
+                            row.remove();
+                            dummyIndex++;
+                        },
+                        'cancel' : function(e){
+                            var row = $(this).parent().parent();
+                            row.remove();
+                        },
+                        'clean' : function(){
+                            $('table.branch tfoot').empty();
+                        }
+                    },
+                    "close" : function(){
+                        jqTbl.remove();
+                        jqRemoveAll.remove();
+                        jqAddNew.remove();
+                        jqRemoveAll.remove();
+                        jqAddNew.remove();
+                    }
+                }
+            };
+
+            states.table1.bind();
+        });
+    </script>
+</head>
+<body>
+
+<div class="branches">
+
+    <table class="grid">
+        <caption>Some persons</caption>
+        <thead>
+        <tr>
+            <th>Person ID</th>
+            <th>Person name</th>
+            <th>Action to take</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div class="actions">
+        <button class='removeAll'>Remove all</button>
+        <button class='addNew'>Add new</button>
+    </div>
+
+</div>
+
+</body>
+</html>

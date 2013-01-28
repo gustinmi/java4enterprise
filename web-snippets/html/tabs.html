@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Recommendations dashboard - Guru</title>
+    <link type="text/css" href="tabs.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var ctrl = $("div#tabctrl");
+            $('.tabs .tab1').click(function () {
+                ctrl.attr("class", "tab1");
+            });
+            $('.tabs .tab2').click(function () {
+                ctrl.attr("class", "tab2");
+            });
+            $('.tabs .tab3').click(function () {
+                ctrl.attr("class", "tab3");
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+<div id="tabctrl" class="tab1">
+
+<div class="tabs">
+    <ul>
+        <li class="tab1">Evaluations - data</li>
+        <li class="tab2">Evaluations - graphs</li>
+        <li class="tab3">Critical consumers - daily</li>
+    </ul>
+</div>
+
+<div class="content">
+
+    <div class="tab tab1">
+        hello 1
+    </div>
+
+    <div class="tab tab2">
+        hello 2
+    </div>
+
+    <div class="tab tab3">
+        hello 3
+    </div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
