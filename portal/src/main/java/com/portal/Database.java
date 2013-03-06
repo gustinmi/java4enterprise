@@ -28,7 +28,6 @@ public class Database {
 	private static final Logger log = Logger.getLogger(Database.class);
 	public static final Database instance = new Database();
 	private final Worker worker;
-	  
 	private final DataSource dataSource;
 
 	private Database() {
@@ -101,8 +100,9 @@ public class Database {
 		return isValid;
 	}
 	
-	
+	/* Most efficient JSON output. No external libraries. */
 	public String getUserDetails(final String user) {
+		
         final StringBuilder output = new StringBuilder();
         ResultSet rs = null;
         PreparedStatement statement = null;
@@ -166,12 +166,12 @@ public class Database {
         return output.toString();
     }
 	
-	 private String getString(String fromString) {
-	        return null==fromString || fromString.isEmpty() ? "" : fromString;
-	    }
+    private String getString(String fromString) {
+        return null==fromString || fromString.isEmpty() ? "" : fromString;
+    }
 	
 
-	//  Worker thread (drop some job on worker and forget it)
+    //  Worker thread (drop some job on worker and forget it)
 	
     public void logValue(final String message, final Timestamp timestamp) {
         final LogValue logValue = new LogValue(message, timestamp);
