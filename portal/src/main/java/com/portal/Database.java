@@ -17,10 +17,17 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 
+/**
+ * Database wrapper class. Utilizing JNDI connection pool. 
+ * Contains separate worker thread for fire and forget SQL statements. 
+ * Motivation for usage of worker thread:
+ *  usage in gui event threads (swing apps); where you do not want your main gui thread to be waiting / blocked
+ *  while you're executing some background tasks like filling statistcs databases or log tables'
+ */
 public class Database {
 	private static final Logger log = Logger.getLogger(Database.class);
 	public static final Database instance = new Database();
-	//private final Worker worker;
+	private final Worker worker;
 	  
 	private final DataSource dataSource;
 
@@ -34,8 +41,8 @@ public class Database {
 			log.error(reason, e);
 			throw new IllegalStateException(reason, e);
 		}
-		//worker = new Worker(dataSource);
-	    //worker.start();
+		worker = new Worker(dataSource);  // start databse worker
+	    worker.start();
 	}
 
 	public Connection getConnection() throws SQLException {
@@ -168,7 +175,7 @@ public class Database {
 	
     public void logValue(final String message, final Timestamp timestamp) {
         final LogValue logValue = new LogValue(message, timestamp);
-        //worker.queue(logValue);
+        worker.queue(logValue);
         if (log.isDebugEnabled())
             log.debug("Queueing log value for logId " + logValue.message + ": " + logValue.timestamp.toString());
     }
