@@ -4,7 +4,7 @@ java4enterprise
 Lightweight java enterprise backend for your html5 applications
 
 The meaning of lightweigth
-----------------'
+-------------
 Usually the Java EE projects are started as a "template" of several different technologies including: Spring, Hibernate, Java EE, Logging frameworks, MV* frameworks, Templating frameworks and so one.
 
 This templates have their roots in history and tradition, but more or less totally unnecessary and even worse, time and money consumers.
